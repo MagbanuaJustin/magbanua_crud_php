@@ -119,6 +119,7 @@
                 type="text"
                 id="username"
                 name="username"
+                placeholder="admin"
                 required
                 autocomplete="username"
             >
@@ -133,6 +134,7 @@
                 type="password"
                 id="password"
                 name="password"
+                placeholder="12345"
                 required
                 autocomplete="current-password"
             >
