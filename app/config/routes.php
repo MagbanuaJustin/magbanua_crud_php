@@ -44,3 +44,46 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
 $router->get('/', 'Welcome::index');
+
+$router->get('/names', 'Names::index')->middleware('auth');
+$router->get('/names/create', 'Names::create')->middleware('auth');
+
+$router->post('/names/store', 'Names::store')->middleware('auth');
+
+$router->get('/names/edit/{id}', 'Names::edit')
+       ->where_number('id')
+       ->middleware('auth');
+
+$router->post('/names/update/{id}', 'Names::update')
+       ->where_number('id')
+       ->middleware('auth');
+
+$router->post('/names/delete/{id}', 'Names::delete')
+       ->where_number('id')
+       ->middleware('auth');
+
+       
+$router->get('/login', 'Auth@login');
+$router->post('/login/authenticate', 'Auth@authenticate');
+$router->get('/logout', 'Auth@logout');
+
+$router->get('/products', 'ProductController::index')
+       ->middleware('auth');
+
+$router->get('/products/create', 'ProductController::create')
+       ->middleware('auth');
+
+$router->post('/products/store', 'ProductController::store')
+       ->middleware('auth');
+
+$router->get('/products/edit/{id}', 'ProductController::edit')
+       ->where_number('id')
+       ->middleware('auth');
+
+$router->post('/products/update/{id}', 'ProductController::update')
+       ->where_number('id')
+       ->middleware('auth');
+
+$router->post('/products/delete/{id}', 'ProductController::delete')
+       ->where_number('id')
+       ->middleware('auth');
